@@ -10,6 +10,8 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const expressPlayground = require("graphql-playground-middleware-express")
     .default;
 
+const PORT = 4000;
+
 const schema = fs.readFileSync(
     path.join(__dirname, "shema", "schema.graphql"),
     "utf-8",
@@ -39,29 +41,25 @@ server.applyMiddleware({
 app.use("/playground", expressPlayground({ endpoint: "/graphql" }));
 
 const connection = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DBNAME,
+    host: process.env.MYSQL_HOST || "localhost",
+    user: process.env.MYSQL_USER || "root",
+    password: process.env.MYSQL_PASSWORD || "root",
+    database: process.env.MYSQL_DBNAME || "testdb",
 });
 
 connection.connect((err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("mysql db => connection");
-    }
-});
-connection.end(function (err) {
-    if (err) {
-        return console.log(err.message);
+    if (err)
+        connection.end((err) => {
+            throw err;
+        });
+    else {
+        app.listen(process.env.BACKEND_PORT || PORT, () => {
+            console.log(`start localhost:${PORT}`);
+        });
     }
 });
 
-app.listen(process.env.BACKEND_PORT || 4000, () =>
-    console.log(
-        `🚀 Server ready at http://localhost:${
-            process.env.BACKEND_PORT || 4000
-        }${server.graphqlPath}`
-    )
-);
+connection.query("SELECT 1 + 2 AS solution", function (error, results, fields) {
+    if (error) throw error;
+    console.log("The solution is: ", results[0].solution);
+});
