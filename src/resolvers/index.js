@@ -107,7 +107,7 @@ const resolvers = {
 
             db.getConnection(function (err, conn) {
                 if (err) {
-                    reject(err);
+                    console.log(err);
                     return;
                 }
                 console.log(newProduct.id);
