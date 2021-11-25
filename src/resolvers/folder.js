@@ -90,6 +90,7 @@ async function updateFolder(_, data, { logger, db }) {
         const r = await db.updateEntity({
             entity: JSON.stringify(data.input),
             id: id,
+            type: "ru.webrx.folder",
         });
 
         return true;

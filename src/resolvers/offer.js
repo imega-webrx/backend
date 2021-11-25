@@ -91,6 +91,7 @@ async function updateOffer(_, data, { logger, db }) {
         const r = await db.updateEntity({
             entity: JSON.stringify(data.input),
             id: id,
+            type: "ru.webrx.offer",
         });
 
         return true;
