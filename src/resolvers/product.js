@@ -79,6 +79,7 @@ async function updateProduct(_, data, { logger, db }) {
         const r = await db.updateEntity({
             entity: JSON.stringify(data.input),
             id: id,
+            type: "ru.webrx.product",
         });
 
         return true;
