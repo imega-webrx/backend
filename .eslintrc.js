@@ -10,7 +10,7 @@ module.exports = {
         "plugin:node/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
-        "plugin:promise/recommended",
+        "plugin:promise/recommended"
     ],
     parserOptions: {
         ecmaVersion: 12,
@@ -55,5 +55,9 @@ module.exports = {
                 varsIgnorePattern: "^_",
             },
         ],
+        "node/no-unsupported-features/es-syntax": ["error", {
+            "version": ">=8.3.0",
+            "ignores": []
+        }]
     },
 };
