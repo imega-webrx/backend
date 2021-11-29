@@ -67,10 +67,10 @@ const resolvers = {
     },
     CatalogItem: {
         __resolveType(data, ctx, info) {
-            if (data.price) {
+            if (data.type === "ru.webrx.product") {
                 return info.schema.getType("Product");
             }
-            if (data.title) {
+            if (data.type === "ru.webrx.folder") {
                 return info.schema.getType("Folder");
             }
 

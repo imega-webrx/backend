@@ -69,7 +69,10 @@ async function addFolder(_, { input }, { logger, db }) {
 
     try {
         const r = await db.createEntity({
-            entity: JSON.stringify(input),
+            entity: JSON.stringify({
+                ...input,
+                type: "ru.webrx.folder",
+            }),
             id: id,
             type: "ru.webrx.folder",
         });
@@ -88,7 +91,10 @@ async function updateFolder(_, data, { logger, db }) {
 
     try {
         const r = await db.updateEntity({
-            entity: JSON.stringify(data.input),
+            entity: JSON.stringify({
+                ...data.input,
+                type: "ru.webrx.folder",
+            }),
             id: id,
             type: "ru.webrx.folder",
         });
