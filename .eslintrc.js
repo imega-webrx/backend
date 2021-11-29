@@ -56,7 +56,7 @@ module.exports = {
             },
         ],
         "node/no-unsupported-features/es-syntax": ["error", {
-            "version": ">=8.3.0",
+            "version": ">=15.10.0",
             "ignores": []
         }]
     },
