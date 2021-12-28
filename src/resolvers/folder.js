@@ -66,16 +66,22 @@ async function addFolder(_, { input }, { logger, db }) {
     if (id === "") {
         return new Error("uuid is invalid");
     }
-
+    // TODO transaction
     try {
         const r = await db.createEntity({
             entity: JSON.stringify({
                 ...input,
                 type: "ru.webrx.folder",
-                rootFolder: process.env.ROOT_FOLDER,
             }),
             id: id,
             type: "ru.webrx.folder",
+        });
+
+        const rTriple = await db.createTriple({
+            object: id,
+            predicate: "ru.webrx.folder",
+            priority: 1,
+            subject: process.env.ROOT_FOLDER,
         });
 
         return true;
