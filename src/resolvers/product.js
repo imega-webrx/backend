@@ -64,7 +64,7 @@ async function addProduct(_, { input }, { logger, db }) {
             object: id,
             predicate: "ru.webrx.product",
             priority: 1,
-            subject: process.env.ROOT_FOLDER,
+            subject: uuid2id(process.env.ROOT_FOLDER),
         });
         const rSuggest = await db.addSuggest({
             id: id,

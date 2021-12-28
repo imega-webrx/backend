@@ -81,7 +81,7 @@ async function addFolder(_, { input }, { logger, db }) {
             object: id,
             predicate: "ru.webrx.folder",
             priority: 1,
-            subject: process.env.ROOT_FOLDER,
+            subject: uuid2id(process.env.ROOT_FOLDER),
         });
 
         return true;
