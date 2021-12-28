@@ -50,7 +50,7 @@ async function addProduct(_, { input }, { logger, db }) {
     if (id === "") {
         return new Error("uuid is invalid");
     }
-
+    // TODO transaction
     try {
         const rEntity = await db.createEntity({
             id: id,
@@ -58,8 +58,13 @@ async function addProduct(_, { input }, { logger, db }) {
             entity: JSON.stringify({
                 ...input,
                 type: "ru.webrx.product",
-                rootFolder: process.env.ROOT_FOLDER,
             }),
+        });
+        const rTriple = await db.createTriple({
+            object: id,
+            predicate: "ru.webrx.product",
+            priority: 1,
+            subject: process.env.ROOT_FOLDER,
         });
         const rSuggest = await db.addSuggest({
             id: id,
