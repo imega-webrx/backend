@@ -84,7 +84,7 @@ async function addFolder(_, { input }, { logger, db }) {
 }
 
 async function updateFolder(_, data, { logger, db }) {
-    const id = uuid2id(data.id);
+    const id = uuid2id(data.input.id);
     if (id === "") {
         return new Error("uuid is invalid");
     }

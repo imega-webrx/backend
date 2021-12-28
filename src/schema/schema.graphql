@@ -122,12 +122,11 @@ type Mutation {
     removeProductFromOffer(input: RemoveTripleInput!): Boolean!
 
     addFolder(input: FolderInput!): Boolean!
-    updateFolder(id: ID!, input: FolderInput!): Boolean!
+    updateFolder(input: FolderInput!): Boolean!
     removeFolder(id: ID!): Boolean!
 
     moveToFolder(input: TripleInput!): Boolean!
     removeFromFolder(input: RemoveTripleInput!): Boolean!
-
 
     addVendor(input: VendorInput!): Boolean!
     # updateProduct(
