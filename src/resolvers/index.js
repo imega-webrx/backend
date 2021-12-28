@@ -3,19 +3,33 @@ const {
     ProvidedRequiredArgumentsOnDirectivesRule,
 } = require("graphql/validation/rules/ProvidedRequiredArgumentsRule");
 const {
-    addFolder, updateFolder, removeFolder, getFolders,
-    getFromFolder, moveToFolder, removeFromFolder, catalog
+    addFolder,
+    updateFolder,
+    removeFolder,
+    getFolders,
+    getFromFolder,
+    moveToFolder,
+    removeFromFolder,
+    catalog,
 } = require("./folder");
 
 const {
-    addOffer, updateOffer, removeOffer,
-    moveProductToOffer, removeProductFromOffer,
-    getOffers, getOffersOfProduct, getOffersOfProductById
+    addOffer,
+    updateOffer,
+    removeOffer,
+    moveProductToOffer,
+    removeProductFromOffer,
+    getOffers,
+    getOffersOfProduct,
+    getOffersOfProductById,
 } = require("./offer");
 
 const {
-    getProducts, searchProduct, addProduct,
-    updateProduct, removeProduct
+    getProducts,
+    searchProduct,
+    addProduct,
+    updateProduct,
+    removeProduct,
 } = require("./product");
 
 const { addVendor } = require("./vendor");
@@ -51,7 +65,6 @@ const resolvers = {
             } catch (error) {
                 logger.error("failed to get all suggests", error);
             }
-
         },
         getProducts: getProducts,
         searchProduct: searchProduct,
@@ -61,6 +74,7 @@ const resolvers = {
 
         getOffersOfProductById: getOffersOfProductById,
 
+        getRootFolder: () => process.env.ROOT_FOLDER,
         getFolders: getFolders,
         getFromFolder: getFromFolder,
         catalog: catalog,
@@ -75,8 +89,8 @@ const resolvers = {
             }
 
             return null;
-        }
-    }
+        },
+    },
 };
 
 module.exports = resolvers;

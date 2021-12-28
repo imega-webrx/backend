@@ -58,12 +58,13 @@ async function addProduct(_, { input }, { logger, db }) {
             entity: JSON.stringify({
                 ...input,
                 type: "ru.webrx.product",
+                rootFolder: process.env.ROOT_FOLDER,
             }),
         });
         const rSuggest = await db.addSuggest({
             id: id,
             source: input.title,
-            type: "ru.webrx.product"
+            type: "ru.webrx.product",
         });
 
         return true;

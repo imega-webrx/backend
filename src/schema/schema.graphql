@@ -55,6 +55,7 @@ type Query {
 
     getOffersOfProductById(subject: ID!): [Offer]
 
+    getRootFolder: ID
     getFromFolder(subject: ID!): [ID]
     getFolders(uuIds: [ID]!): [Folder]
     catalog(id: ID): [CatalogItem]!

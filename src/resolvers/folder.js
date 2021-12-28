@@ -72,6 +72,7 @@ async function addFolder(_, { input }, { logger, db }) {
             entity: JSON.stringify({
                 ...input,
                 type: "ru.webrx.folder",
+                rootFolder: process.env.ROOT_FOLDER,
             }),
             id: id,
             type: "ru.webrx.folder",
