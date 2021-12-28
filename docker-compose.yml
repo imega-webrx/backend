@@ -13,6 +13,7 @@ services:
       - MYSQL_PASSWORD=qwerty
       - MYSQL_DBNAME=stock
       - BACKEND_PORT=4000
+      - ROOT_FOLDER=ed4bf8f5-8b4e-435b-83cc-27feada6136a
     ports:
       - 4000:4000
     command: ["node", "/app/src/index.js"]
