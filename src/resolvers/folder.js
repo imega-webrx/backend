@@ -49,6 +49,10 @@ async function catalog(_, { id }, { logger, db }) {
             subject,
         });
 
+        if (edges.length == 0) {
+            return [];
+        }
+
         const foundOfferIds = edges.map((edge) => edge.object);
 
         const getIDsWithX = prepareQueryWhereInIDs(foundOfferIds);
