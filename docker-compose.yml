@@ -19,8 +19,8 @@ services:
     command: ["node", "/app/src/index.js"]
 
   mysql:
-    image: mysql:5.7.19
+    image: mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=qwerty
+      - MARIADB_ROOT_PASSWORD=qwerty
     volumes:
       - ./test/mysql/dump:/docker-entrypoint-initdb.d
