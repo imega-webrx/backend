@@ -35,3 +35,6 @@ CREATE TABLE suggestion_products (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='suggestion products';
 
 SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+INSERT INTO `entities` (id,`type`,entity) VALUES
+(X'435B8B4EED4BF8F583CC27FEADA6136A','ru.webrx.folder','{\"id\":\"ed4bf8f5-8b4e-435b-83cc-27feada6136a\",\"title\":\"root folder\",\"description\":\"\",\"type\":\"ru.webrx.folder\"}');
